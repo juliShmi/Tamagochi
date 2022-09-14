@@ -1,1 +1,3 @@
 # Tamagochi
+
+#training project
