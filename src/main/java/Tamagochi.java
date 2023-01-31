@@ -2,10 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Tamagochi {
-    private JFrame catFrame;
+    private JFrame animalFrame;
     private JTextArea statusArea;
     private JButton feedButton;
-    private Cat cat;
+    private Animal animal;
 
     public static void main(String[] args) {
         Tamagochi tamagochi = new Tamagochi();
@@ -14,35 +14,36 @@ public class Tamagochi {
 
     public void play() {
         initFrame();
-        cat = new Cat();
+        animal = new Cat();
         //Thread catThread = new Thread(cat);
         //catThread.start();
-        while(cat.isAlive()) {
+        while(animal.isAlive()) {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            cat.calculateTime();
+            animal.calculateTime();
             showStatus();
         }
-        statusArea.setText("Cat is dead!");
+        statusArea.setText("Your animal is dead!");
         //catThread.stop();
     }
 
     private void initFrame() {
-        catFrame = new JFrame("Cat Frame");
-        catFrame.setSize(250, 250);
-        catFrame.setLocation(300, 200);
+        animalFrame = new JFrame("Animal Frame");
+        animalFrame.setSize(250, 250);
+        animalFrame.setLocation(300, 200);
         statusArea = new JTextArea(10, 40);
-        catFrame.getContentPane().add(BorderLayout.CENTER, statusArea);
+        animalFrame.getContentPane().add(BorderLayout.CENTER, statusArea);
         feedButton = new JButton("Feed me");
-        catFrame.getContentPane().add(BorderLayout.SOUTH, feedButton);
-        feedButton.addActionListener(e -> cat.feed());
-        catFrame.setVisible(true);
+        animalFrame.getContentPane().add(BorderLayout.SOUTH, feedButton);
+        feedButton.addActionListener(e -> animal.feed());
+        animalFrame.setVisible(true);
     }
 
     private void showStatus() {
-        statusArea.setText("Age: " + cat.getAge() + "\n Health: " + cat.getHealth() + "\n Satiation: " + cat.getSatiation());
+        statusArea.setText("Age: " + animal.getAge() + "\n Health: " + animal.getHealth()
+                + "\n Satiation: " + animal.getSatiation());
     }
 }
