@@ -1,13 +1,33 @@
-public abstract class Animal {
+public abstract class Animal implements Runnable {
 
     private final double MAX_AGE = 10;
     public final double MAX_HEALTH = 10;
     public final double MAX_SATIATION = 10;
 
-    private double speedK = 50000d / 3600000d;
+    private double speedK = 1d / 1000d;//50000d / 3600000d;
     public double age;
     private double health;
     private double satiation;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    private String picture;
 
     public void setAlive(boolean alive) {
         isAlive = alive;
